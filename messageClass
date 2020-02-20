@@ -1,0 +1,18 @@
+from json import JSONEncoder
+import json
+class MyEncoder():
+    def __init__(self, time = "default", origin = "default", data = "default"):
+        self.time = time
+        self.data = origin
+        self.origin = data
+    def encode(self):
+        message = {}
+        message["time"] = self.time
+        message["data"] = self.data
+        message["origin"] = self.origin
+        return json.dumps(message)
+    def decode(self, message):
+        newvalues = json.loads(message)
+        self.time = newvalues["time"]
+        self.origin = newvalues["origin"]
+        self.data = newvalues["data"]
